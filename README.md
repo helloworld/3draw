@@ -2,7 +2,7 @@
 =
 
 ####What is 3Draw?
-3Draw is a interactive 3D modeling software that was created at a 24 hour hackathon (PilotDC) by Matthew Kaufer, Ravi Kodali, Rushi Shah, and Sashank Thupukari. It utilizes a smartphone's gyroscope capabilities and a PCs processing power to model the phone's orientation in realtime and display it in 3D space. 
+3Draw is a interactive 3D modeling software that was created at a 24 hour hackathon (PilotDC) by Matthew Kaufer, Ravi Kodali, Rushi Shah, and Ash. It utilizes a smartphone's gyroscope capabilities and a PCs processing power to model the phone's orientation in realtime and display it in 3D space. 
 ###How does it work?
 3Draw connects a phone's gyroscope with a computer using web-sockets. It sends the gyroscope data as a JSON file that is used to calculate the orientation in 3D space using Eularian geometry. The orientation is used to create new unit vectors that are appended to the previous vectors and overtime will create a 3D model of the orientation. Added functionality allows phones to stop the line creation, calibrate the orientation, toggle line breaks on/off, change the magnitude of the vector, and clear the current 3D space. A code on the top left of the computer screen is used to sync specific phones with specific computers allowng multiple instances to run at the same time. 
 ###Getting started:
