@@ -1,5 +1,4 @@
 
-THREE;
 
 		  //  addEventListener("deviceorientation", function(event){
 		  //  	line.rotation.x = event.alpha * Math.PI / 180.0;
@@ -136,7 +135,7 @@ THREE;
 
 				camera = new THREE.PerspectiveCamera( 70, window.innerWidth / window.innerHeight, 1, 1000 );
 				// scene.rotation
-				camera.position = new THREE.Vector3(0, 0, 400);
+				camera.position.set(0, 0, 400);
         
         controls = new THREE.TrackballControls( camera );	
 
@@ -167,7 +166,7 @@ THREE;
         posPart = new THREE.Particle(mat);
         
         posPart.scale.x = posPart.scale.y = 10;
-        posPart.material.colo = 0xffffff;
+        posPart.material.color = 0xffffff;
         scene.add(posPart);        
 
 				var matG = new THREE.ParticleCanvasMaterial( {
