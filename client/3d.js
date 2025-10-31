@@ -1,6 +1,4 @@
 
-THREE;
-
 		  //  addEventListener("deviceorientation", function(event){
 		  //  	line.rotation.x = event.alpha * Math.PI / 180.0;
 		  //  	line.rotation.y = event.beta * Math.PI / 180.0;
@@ -167,7 +165,7 @@ THREE;
         posPart = new THREE.Particle(mat);
         
         posPart.scale.x = posPart.scale.y = 10;
-        posPart.material.colo = 0xffffff;
+        posPart.material.color = 0xffffff;
         scene.add(posPart);        
 
 				var matG = new THREE.ParticleCanvasMaterial( {

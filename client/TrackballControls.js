@@ -373,7 +373,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 		if ( _state === STATE.ROTATE && !_this.noRotate ) {
 
 			_rotateStart = _this.getMouseProjectionOnBall( event.clientX, event.clientY );
-			_rotateEnd.copy(_rotateStart)
+			_rotateEnd.copy(_rotateStart);
 
 		} else if ( _state === STATE.ZOOM && !_this.noZoom ) {
 
@@ -383,7 +383,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 		} else if ( _state === STATE.PAN && !_this.noPan ) {
 
 			_panStart = _this.getMouseOnScreen( event.clientX, event.clientY );
-			_panEnd.copy(_panStart)
+			_panEnd.copy(_panStart);
 
 		}
 
@@ -498,7 +498,7 @@ THREE.TrackballControls = function ( object, domElement ) {
 			case 2:
 				var dx = event.touches[ 0 ].pageX - event.touches[ 1 ].pageX;
 				var dy = event.touches[ 0 ].pageY - event.touches[ 1 ].pageY;
-				_touchZoomDistanceEnd = Math.sqrt( dx * dx + dy * dy )
+				_touchZoomDistanceEnd = Math.sqrt( dx * dx + dy * dy );
 				break;
 
 			case 3:
