@@ -35,8 +35,12 @@ THREE;
 
     Handlebars.registerHelper('makeKey', function(){
        
-       var x = Math.random().toString(36).substring(13).substring(0,2).toUpperCase(); 
-       Session.set('compKey', x);
+       var key = '';
+       while (key.length < 2) {
+         key += Math.random().toString(36).substr(2);
+       }
+       key = key.substr(0, 2).toUpperCase();
+       Session.set('compKey', key);
        return Session.get('compKey');
         
     });
@@ -72,19 +76,21 @@ THREE;
         if(!d)
           d = 5; 
 				// var x = new Date().getTime();
-				var ret = new THREE.Vector3(mag, 0, 0);
-				ret.applyEuler(new THREE.Euler(c,a,b,'XYZ'));
-				line.geometry.vertices[1] = ret;
-        
-				particle.position = line.geometry.vertices[1];
+			var ret = new THREE.Vector3(mag, 0, 0);
+			ret.applyEuler(new THREE.Euler(c,a,b,'XYZ'));
+			line.geometry.vertices[1].copy(ret);
+			line.geometry.verticesNeedUpdate = true;
+
+			particle.position.copy(line.geometry.vertices[1]);
         var desired = new THREE.Vector3();
         desired.copy(ret);
         desired.multiplyScalar(d/mag);
         pos.add(desired);
         var n = new THREE.Vector3();
         n.copy(pos);
-        if(stopped == 1)
+        if(stopped == 1) {
           drawGeo.vertices.push(n);
+        }
         else if(stopped == 0){
 
          drawGeo = new THREE.Geometry();
@@ -97,8 +103,11 @@ THREE;
 
         }
         //if it's -1, do nothing
-        
-        posPart.position = n;
+
+        posPart.position.copy(n);
+        if (drawGeo) {
+          drawGeo.verticesNeedUpdate = true;
+        }
         
 				return ret;
 				
@@ -109,17 +118,17 @@ THREE;
         function clearCanvas(){
           if(drawGeo)
           {
-            drawGeo.vertices = [];
-            drawGeo.vertices.push( new THREE.Vector3() );
-            drawGeo.vertices.push( new THREE.Vector3() );
             pos = new THREE.Vector3();
-            drawGroup.children = [];
-             drawLine = new THREE.Line(drawGeo, new THREE.LineBasicMaterial({color: 0x77FF77,  shading: THREE.SmoothShading}));
-             drawLine.material.linewidth = 10;
-             drawGroup.add(drawLine);
-            //drawGroup.children = [];
-            //drawLine = new THREE.Line(drawGeo);
-            //drawGroup.add(drawLine);
+            while (drawGroup.children.length) {
+              drawGroup.remove(drawGroup.children[0]);
+            }
+            drawGeo = new THREE.Geometry();
+            drawGeo.vertices.push( new THREE.Vector3() );
+            drawGeo.vertices.push( new THREE.Vector3() );
+            drawLine = new THREE.Line(drawGeo, new THREE.LineBasicMaterial({color: 0x77FF77,  shading: THREE.SmoothShading}));
+            drawLine.material.linewidth = 10;
+            drawGroup.add(drawLine);
+            drawGeo.verticesNeedUpdate = true;
           }
         }
 
@@ -167,7 +176,9 @@ THREE;
         posPart = new THREE.Particle(mat);
         
         posPart.scale.x = posPart.scale.y = 10;
-        posPart.material.colo = 0xffffff;
+        if (posPart.material && posPart.material.color) {
+          posPart.material.color.setHex(0xffffff);
+        }
         scene.add(posPart);        
 
 				var matG = new THREE.ParticleCanvasMaterial( {
@@ -297,7 +308,7 @@ THREE;
 
 
   
-  window.addEventListener("deviceorientation", function(){
+  window.addEventListener("deviceorientation", function(event){
     event.key = Session.get('mobKey');
     event.ctype = 'orient';
     event.mag = $("#magSlider").val();
