@@ -1,4 +1,2 @@
-/streams
-/three
-/three.js
-/bootstrap-3
+# Previously gitignored packages from Meteorite era
+# Local packages are now committed for modern Meteor compatibility

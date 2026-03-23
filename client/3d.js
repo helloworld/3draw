@@ -33,7 +33,7 @@ THREE;
   
       
 
-    Handlebars.registerHelper('makeKey', function(){
+    Template.registerHelper('makeKey', function(){
        
        var x = Math.random().toString(36).substring(13).substring(0,2).toUpperCase(); 
        Session.set('compKey', x);
@@ -41,7 +41,7 @@ THREE;
         
     });
 
-    Handlebars.registerHelper('stopped', function(){
+    Template.registerHelper('stopped', function(){
       return Session.get('stop');
     });
 
@@ -291,7 +291,7 @@ THREE;
 
 			}
 
-    Handlebars.registerHelper('isMobile', function(){
+    Template.registerHelper('isMobile', function(){
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); 
     });
 
