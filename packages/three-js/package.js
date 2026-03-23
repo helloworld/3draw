@@ -7,5 +7,6 @@ Package.describe({
 Package.onUse(function (api) {
   api.versionsFrom('2.16');
   api.addFiles('three.js', 'client');
+  api.addFiles('globals.js', 'client');
   api.export('THREE', 'client');
 });

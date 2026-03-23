@@ -1,6 +1,7 @@
 /**
  * @author mrdoob / http://mrdoob.com/
  */
+var THREE = window.THREE;
 
 THREE.GridHelper = function ( size, step ) {
 

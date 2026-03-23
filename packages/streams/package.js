@@ -7,6 +7,7 @@ Package.describe({
 Package.onUse(function (api) {
   api.versionsFrom('2.16');
   api.use('underscore', ['client', 'server']);
+  api.use('mongo', 'client');
   api.use('check', 'server');
   api.use('random', 'server');
   api.use('insecure', {weak: true});
