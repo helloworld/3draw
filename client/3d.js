@@ -1,12 +1,4 @@
-
-THREE;
-
-		  //  addEventListener("deviceorientation", function(event){
-		  //  	line.rotation.x = event.alpha * Math.PI / 180.0;
-		  //  	line.rotation.y = event.beta * Math.PI / 180.0;
-		  //  	line.rotation.z = event.gamma * Math.PI / 180.0;	
-		  //  });
-
+  var THREE = window.THREE;
 
 	var camera, scene, renderer;
 	var mesh;
@@ -18,7 +10,7 @@ THREE;
   var drawGroup;
   var drawGeo;
   var drawLine;
-  var pos = new THREE.Vector3();
+  var pos;
   var tm = 5;
   var posPart;
 
@@ -33,7 +25,7 @@ THREE;
   
       
 
-    Handlebars.registerHelper('makeKey', function(){
+    Template.registerHelper('makeKey', function(){
        
        var x = Math.random().toString(36).substring(13).substring(0,2).toUpperCase(); 
        Session.set('compKey', x);
@@ -41,11 +33,12 @@ THREE;
         
     });
 
-    Handlebars.registerHelper('stopped', function(){
+    Template.registerHelper('stopped', function(){
       return Session.get('stop');
     });
 
     $(function(){
+      pos = new THREE.Vector3();
       Session.set('mag', 5);
         if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent))
         {
@@ -291,7 +284,7 @@ THREE;
 
 			}
 
-    Handlebars.registerHelper('isMobile', function(){
+    Template.registerHelper('isMobile', function(){
         return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent); 
     });
 
@@ -334,12 +327,12 @@ THREE;
         
 $(function(){
     sendData = function(message) {
-    orientationStream.emit('message', message);
+    window.orientationStream.emit('message', message);
     // if(Session.get('allowMessage'))
     //console.log(message);
     };
 
-  orientationStream.on('message', function(message) {
+  window.orientationStream.on('message', function(message) {
     // if(Session.get('allowMessage'))
     //console.log(message);
     if(Session.get('compKey') == message.key && message.ctype == 'orient')
