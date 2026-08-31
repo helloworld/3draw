@@ -1,6 +1,7 @@
 /**
  * @author Eberhard Graether / http://egraether.com/
  */
+var THREE = window.THREE;
 
 THREE.TrackballControls = function ( object, domElement ) {
 

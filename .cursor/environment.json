@@ -1,0 +1,17 @@
+{
+  "name": "3Draw (Meteor 2.16)",
+  "install": "bash .cursor/install.sh",
+  "ports": [
+    {
+      "name": "meteor dev server",
+      "port": 3000
+    }
+  ],
+  "terminals": [
+    {
+      "name": "meteor",
+      "command": "METEOR_ALLOW_SUPERUSER=1 meteor run --port 3000",
+      "description": "3Draw Meteor dev server. Serves the app at http://localhost:3000/ and auto-starts a bundled MongoDB on port 3001. First build after a fresh checkout takes ~60-90s."
+    }
+  ]
+}

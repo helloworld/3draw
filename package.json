@@ -1,0 +1,7 @@
+{
+  "name": "3draw",
+  "private": true,
+  "dependencies": {
+    "@babel/runtime": "^7.29.2"
+  }
+}
