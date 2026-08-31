@@ -6,7 +6,13 @@
 
 3Draw is a hackathon project (originally 2014) — an interactive 3D modeling web app built with **Meteor.js** and **Three.js**. It connects a smartphone gyroscope to a PC via WebSockets so users can draw lines in 3D space by tilting their phone. The original Meteor 0.8.0 configuration was upgraded to Meteor 2.16 because the 2014-era binaries can no longer be installed on modern systems.
 
+### Environment setup
+
+- The Cloud Agent environment is defined in `.cursor/environment.json`. `install` runs `.cursor/install.sh` (installs the Meteor 2.16 toolchain if missing, then `meteor npm install`), and the `meteor` terminal auto-starts the dev server at `http://localhost:3000/`.
+
 ### Running the dev server
+
+In Cloud Agents the dev server is started automatically by the `meteor` terminal. To run it manually:
 
 ```bash
 METEOR_ALLOW_SUPERUSER=1 meteor run --port 3000
